@@ -13,7 +13,7 @@ const NotesPage = ({ groupId }) => {
     const fetchGroupDetails = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5002/api/groups/${groupId}`
+          `https://notesmaking-backend.onrender.com/api/groups/${groupId}`
         );
         setGroupDetails(response.data);
       } catch (error) {
@@ -24,7 +24,7 @@ const NotesPage = ({ groupId }) => {
     const fetchNotes = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5002/api/notes/${groupId}`
+          `https://notesmaking-backend.onrender.com/api/notes/${groupId}`
         );
         setNotes(response.data);
       } catch (error) {
@@ -47,7 +47,7 @@ const NotesPage = ({ groupId }) => {
 
     try {
       const response = await axios.post(
-        `http://localhost:5002/api/notes/${groupId}`,
+        `https://notesmaking-backend.onrender.com/api/notes/${groupId}`,
         noteWithTimestamp
       );
       setNotes([...notes, response.data]);

@@ -7,7 +7,7 @@ function MainContent({ selectedGroup, notes, setNotes }) {
 
   const addNote = () => {
     if (!newNote) return;
-    axios.post(`http://localhost:5002/api/notes/${selectedGroup._id}`, { content: newNote })
+    axios.post(`https://notesmaking-backend.onrender.com/api/notes/${selectedGroup._id}`, { content: newNote })
       .then(response => setNotes([...notes, response.data]))
       .catch(error => console.error('Error adding note:', error));
     setNewNote('');

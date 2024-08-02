@@ -13,7 +13,7 @@ const App = () => {
   useEffect(() => {
     const fetchGroups = async () => {
       try {
-        const response = await axios.get('http://localhost:5002/api/groups');
+        const response = await axios.get('https://notesmaking-backend.onrender.com/api/groups');
         setGroups(response.data);
       } catch (error) {
         console.error('Error fetching groups:', error);
@@ -37,7 +37,7 @@ const App = () => {
 
   const handleCreateGroup = async (newGroup) => {
     try {
-      const response = await axios.post('http://localhost:5002/api/groups', newGroup);
+      const response = await axios.post('https://notesmaking-backend.onrender.com/api/groups', newGroup);
       setGroups([...groups, response.data]);
     } catch (error) {
       console.error('Error creating group:', error);

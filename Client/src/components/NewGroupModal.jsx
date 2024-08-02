@@ -7,7 +7,7 @@ function NewGroupModal({ setShowModal }) {
 
   const createGroup = () => {
     if (!name) return;
-    axios.post('http://localhost:5002/api/groups', { name, color })
+    axios.post('https://notesmaking-backend.onrender.com/api/groups', { name, color })
       .then(() => setShowModal(false))
       .catch(error => console.error('Error creating group:', error));
   };

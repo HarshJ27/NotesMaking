@@ -46,30 +46,5 @@ router.post('/:groupId', async (req, res) => {
       res.status(500).json({ error: error.message });
     }
   });
-  
-  // Delete a note entry from a group's notes
-  router.delete('/:groupId/:noteId', async (req, res) => {
-    try {
-      const { groupId, noteId } = req.params;
-      const noteDocument = await Note.findOne({ groupId });
-  
-      if (!noteDocument) {
-        return res.status(404).json({ error: 'No notes found for this group' });
-      }
-  
-      const noteIndex = noteDocument.contents.findIndex(note => note._id.toString() === noteId);
-  
-      if (noteIndex === -1) {
-        return res.status(404).json({ error: 'Note entry not found' });
-      }
-  
-      noteDocument.contents.splice(noteIndex, 1);
-      await noteDocument.save();
-  
-      res.status(200).json({ message: 'Note entry deleted successfully' });
-    } catch (error) {
-      res.status(500).json({ error: error.message });
-    }
-  });
 
 export default router;
